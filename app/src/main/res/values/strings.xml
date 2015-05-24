@@ -1,10 +1,4 @@
 <resources>
-    <string name="app_name">Cat in the Hat</string>
-    <string name="the_cat">The Cat</string>
-    <string name="thing1">Thing 1</string>
-    <string name="thing2">Thing 2</string>
-    <string name="thingamajigger">Thingamajigger</string>
-    <string name="sally">Sally</string>
-    <string name="nick">Nick</string>
-    <string name="dr_seuss">Dr. Seuss</string>
+    <string name="app_name">Spotify Streamer</string>
+    <string name="generic_loading">Loading</string>
 </resources>
