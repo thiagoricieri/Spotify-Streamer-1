@@ -22,6 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_medium"
+                android:gravity="center"
                 style="@style/SingleLineText"/>
 
             <TextView
@@ -29,6 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_medium"
+                android:gravity="center"
                 style="@style/SingleLineTextMuted"/>
 
             <ImageView
@@ -44,6 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_medium"
+                android:gravity="center"
                 style="@style/SingleLineText"/>
 
             <SeekBar

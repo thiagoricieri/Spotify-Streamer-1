@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -50,7 +51,7 @@ public class TrackActivity extends AppCompatActivity {
 	SeekBar seekBar;
 
 	@InjectView(R.id.btn_play)
-	ButterKnife btnPlay;
+	Button btnPlay;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
