@@ -13,6 +13,7 @@
         android:id="@+id/album_image"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:scaleType="centerCrop"
         android:background="@color/light_background"/>
 
     <LinearLayout
@@ -35,7 +36,6 @@
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/margin_medium"
-            android:textColor="@color/text_gray"
-            style="@style/SingleLineText"/>
+            style="@style/SingleLineTextMuted"/>
     </LinearLayout>
 </LinearLayout>

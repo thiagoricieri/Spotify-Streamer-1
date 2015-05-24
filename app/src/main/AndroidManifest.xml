@@ -17,5 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.ArtistsAlbumsActivity"
+            android:parentActivityName=".ui.MainActivity" />
     </application>
 </manifest>

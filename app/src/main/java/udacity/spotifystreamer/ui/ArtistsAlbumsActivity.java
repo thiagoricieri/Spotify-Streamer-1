@@ -18,7 +18,10 @@ import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -66,7 +69,9 @@ public class ArtistsAlbumsActivity extends AppCompatActivity implements
 		SpotifyApi api = new SpotifyApi();
 		SpotifyService spotify = api.getService();
 		setLoading(true);
-		spotify.getArtistTopTrack(artistId, new Callback<Tracks>() {
+		HashMap<String, Object> options = new HashMap<>();
+		options.put("country", "BR");
+		spotify.getArtistTopTrack(artistId, options, new Callback<Tracks>() {
 			@Override
 			public void success(Tracks tracks, Response response) {
 				runOnUiThread(() -> {
@@ -110,10 +115,6 @@ public class ArtistsAlbumsActivity extends AppCompatActivity implements
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-		Track artist = adapter.getItem(position);
-		Intent intent = new Intent(this, ArtistsAlbumsActivity.class);
-		intent.putExtra(ArtistsAlbumsActivity.ARTIST_ID, artist.id);
-		startActivity(intent);
 	}
 
 	private void setLoading(boolean loading){

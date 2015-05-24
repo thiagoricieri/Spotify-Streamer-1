@@ -126,6 +126,7 @@ public class MainActivity extends AppCompatActivity implements
 		Artist artist = adapter.getItem(position);
 		Intent intent = new Intent(this, ArtistsAlbumsActivity.class);
 		intent.putExtra(ArtistsAlbumsActivity.ARTIST_ID, artist.id);
+		intent.putExtra(ArtistsAlbumsActivity.ARTIST_NAME, artist.name);
 		startActivity(intent);
 	}
 
