@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	private void searchSpotifyArtists(String query){
-
 	}
 
 	private void setLoading(boolean loading){
