@@ -3,6 +3,7 @@ package udacity.spotifystreamer.ui;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -58,6 +59,7 @@ public class TrackActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_track);
 		ButterKnife.inject(this);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		// values
 		try {
@@ -77,6 +79,17 @@ public class TrackActivity extends AppCompatActivity {
 
 		// Play
 		playTrack();
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				finish();
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
+		}
 	}
 
 	@OnClick(R.id.btn_play)

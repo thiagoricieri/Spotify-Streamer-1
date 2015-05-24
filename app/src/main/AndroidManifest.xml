@@ -20,11 +20,9 @@
         </activity>
         <activity
             android:screenOrientation="portrait"
-            android:name=".ui.ArtistsAlbumsActivity"
-            android:parentActivityName=".ui.MainActivity" />
+            android:name=".ui.ArtistsAlbumsActivity" />
         <activity
             android:screenOrientation="portrait"
-            android:name=".ui.TrackActivity"
-            android:parentActivityName=".ui.ArtistsAlbumsActivity" />
+            android:name=".ui.TrackActivity" />
     </application>
 </manifest>

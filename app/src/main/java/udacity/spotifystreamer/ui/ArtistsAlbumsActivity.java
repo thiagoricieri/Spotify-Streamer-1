@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -51,6 +52,7 @@ public class ArtistsAlbumsActivity extends AppCompatActivity implements
 		setContentView(R.layout.activity_artists_albums);
 		ButterKnife.inject(this);
 		searchTracksTopTracks(getIntent().getStringExtra(ARTIST_ID));
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		try {
 			getSupportActionBar().setTitle(getIntent().getStringExtra(ARTIST_NAME));
@@ -127,6 +129,17 @@ public class ArtistsAlbumsActivity extends AppCompatActivity implements
 		else if(mProgressDialog != null){
 			mProgressDialog.dismiss();
 			mProgressDialog = null;
+		}
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				finish();
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
 		}
 	}
 
