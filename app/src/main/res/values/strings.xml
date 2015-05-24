@@ -6,4 +6,5 @@
     <string name="fail_response">Something wrong with the response.</string>
     <string name="fail_no_artists">No artists found.</string>
     <string name="fail_no_tracks">No tracks found.</string>
+    <string name="search">Search</string>
 </resources>

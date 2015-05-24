@@ -24,6 +24,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import kaaes.spotify.webapi.android.SpotifyApi;
 import kaaes.spotify.webapi.android.SpotifyService;
+import kaaes.spotify.webapi.android.models.ArtistsPager;
 import kaaes.spotify.webapi.android.models.Track;
 import kaaes.spotify.webapi.android.models.Tracks;
 import retrofit.Callback;
@@ -68,27 +69,31 @@ public class ArtistsAlbumsActivity extends AppCompatActivity implements
 		spotify.getArtistTopTrack(artistId, new Callback<Tracks>() {
 			@Override
 			public void success(Tracks tracks, Response response) {
+				runOnUiThread(() -> {
 				setLoading(false);
-				if (tracks == null) {
-					Toast.makeText(ArtistsAlbumsActivity.this,
-						getString(R.string.fail_response),
-						Toast.LENGTH_LONG).show();
-				}
-				else if(tracks.tracks.isEmpty()){
-					Toast.makeText(ArtistsAlbumsActivity.this,
-						getString(R.string.fail_no_tracks),
-						Toast.LENGTH_LONG).show();
-				}
-				else {
-					createAdapterWithResult(tracks.tracks);
-				}
+					if (tracks == null) {
+						Toast.makeText(ArtistsAlbumsActivity.this,
+							getString(R.string.fail_response),
+							Toast.LENGTH_LONG).show();
+					}
+					else if(tracks.tracks.isEmpty()){
+						Toast.makeText(ArtistsAlbumsActivity.this,
+							getString(R.string.fail_no_tracks),
+							Toast.LENGTH_LONG).show();
+					}
+					else {
+						createAdapterWithResult(tracks.tracks);
+					}
+				});
 			}
 			@Override
 			public void failure(RetrofitError error) {
-				setLoading(false);
-				Toast.makeText(ArtistsAlbumsActivity.this,
-					getString(R.string.fail_loading),
-					Toast.LENGTH_LONG).show();
+				runOnUiThread(() -> {
+					setLoading(false);
+					Toast.makeText(ArtistsAlbumsActivity.this,
+						getString(R.string.fail_loading),
+						Toast.LENGTH_LONG).show();
+				});
 			}
 		});
 	}

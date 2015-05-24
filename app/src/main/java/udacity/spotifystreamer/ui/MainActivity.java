@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements
 
 		// Apply IME Action
 		textTypeAndSearch.setOnEditorActionListener((example, actionId, event) -> {
-			if (actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) {
+			if (actionId == EditorInfo.IME_NULL) {
 				searchSpotifyArtists(textTypeAndSearch.getText().toString());
 				dismissKeyboard();
 			}
@@ -84,27 +84,29 @@ public class MainActivity extends AppCompatActivity implements
 		spotify.searchArtists(query, new Callback<ArtistsPager>() {
 			@Override
 			public void success(ArtistsPager artistsPager, Response response) {
-				setLoading(false);
-				if (artistsPager == null) {
-					Toast.makeText(MainActivity.this,
-						getString(R.string.fail_response),
-						Toast.LENGTH_LONG).show();
-				}
-				else if(artistsPager.artists.items.isEmpty()){
-					Toast.makeText(MainActivity.this,
-					    getString(R.string.fail_no_artists),
-					    Toast.LENGTH_LONG).show();
-				}
-				else {
-					createAdapterWithResult(artistsPager.artists);
-				}
+				runOnUiThread(() -> {
+					setLoading(false);
+					if (artistsPager == null) {
+						Toast.makeText(MainActivity.this,
+							getString(R.string.fail_response),
+							Toast.LENGTH_LONG).show();
+					} else if (artistsPager.artists.items.isEmpty()) {
+						Toast.makeText(MainActivity.this,
+							getString(R.string.fail_no_artists),
+							Toast.LENGTH_LONG).show();
+					} else {
+						createAdapterWithResult(artistsPager.artists);
+					}
+				});
 			}
 			@Override
 			public void failure(RetrofitError error) {
-				setLoading(false);
-				Toast.makeText(MainActivity.this,
-					getString(R.string.fail_loading),
-					Toast.LENGTH_LONG).show();
+				runOnUiThread(() -> {
+					setLoading(false);
+					Toast.makeText(MainActivity.this,
+						getString(R.string.fail_loading),
+						Toast.LENGTH_LONG).show();
+				});
 			}
 		});
 	}
