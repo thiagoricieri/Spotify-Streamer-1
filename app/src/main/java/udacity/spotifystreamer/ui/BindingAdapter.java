@@ -1,4 +1,4 @@
-package udacity.spotifystreamer.ui.adapter;
+package udacity.spotifystreamer.ui;
 
 import android.content.Context;
 import android.view.LayoutInflater;

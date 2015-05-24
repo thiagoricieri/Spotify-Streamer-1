@@ -20,21 +20,17 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import kaaes.spotify.webapi.android.SpotifyApi;
 import kaaes.spotify.webapi.android.SpotifyService;
-import kaaes.spotify.webapi.android.models.ArtistsPager;
 import kaaes.spotify.webapi.android.models.Track;
 import kaaes.spotify.webapi.android.models.Tracks;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 import udacity.spotifystreamer.R;
-import udacity.spotifystreamer.ui.adapter.BindingAdapter;
 
 
 public class ArtistsAlbumsActivity extends AppCompatActivity implements
@@ -75,22 +71,21 @@ public class ArtistsAlbumsActivity extends AppCompatActivity implements
 			@Override
 			public void success(Tracks tracks, Response response) {
 				runOnUiThread(() -> {
-				setLoading(false);
+					setLoading(false);
 					if (tracks == null) {
 						Toast.makeText(ArtistsAlbumsActivity.this,
 							getString(R.string.fail_response),
 							Toast.LENGTH_LONG).show();
-					}
-					else if(tracks.tracks.isEmpty()){
+					} else if (tracks.tracks.isEmpty()) {
 						Toast.makeText(ArtistsAlbumsActivity.this,
 							getString(R.string.fail_no_tracks),
 							Toast.LENGTH_LONG).show();
-					}
-					else {
+					} else {
 						createAdapterWithResult(tracks.tracks);
 					}
 				});
 			}
+
 			@Override
 			public void failure(RetrofitError error) {
 				runOnUiThread(() -> {
@@ -115,6 +110,14 @@ public class ArtistsAlbumsActivity extends AppCompatActivity implements
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+		Track track = adapter.getItem(position);
+		Intent intent = new Intent(this, TrackActivity.class);
+		intent.putExtra(TrackActivity.TRACK_ID, track.id);
+		intent.putExtra(TrackActivity.TRACK_NAME, track.name);
+		intent.putExtra(TrackActivity.TRACK_IMAGE, track.album.images.get(0).url);
+		intent.putExtra(TrackActivity.TRACK_ARTIST, getIntent().getStringExtra(ARTIST_NAME));
+		intent.putExtra(TrackActivity.TRACK_ALBUM, track.album.name);
+		startActivity(intent);
 	}
 
 	private void setLoading(boolean loading){

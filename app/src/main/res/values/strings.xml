@@ -7,4 +7,8 @@
     <string name="fail_no_artists">No artists found.</string>
     <string name="fail_no_tracks">No tracks found.</string>
     <string name="search">Search</string>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="rewind">Rewind</string>
+    <string name="forward">Forward</string>
 </resources>
