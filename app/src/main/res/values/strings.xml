@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Spotify Streamer</string>
     <string name="generic_loading">Loading</string>
+    <string name="top_tracks">Top tracks</string>
+    <string name="fail_loading">We're sorry, but your request failed.</string>
+    <string name="fail_response">Something wrong with the response.</string>
+    <string name="fail_no_artists">No artists found.</string>
+    <string name="fail_no_tracks">No tracks found.</string>
 </resources>
