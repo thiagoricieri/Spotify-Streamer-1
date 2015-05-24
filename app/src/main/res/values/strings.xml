@@ -1,6 +1,10 @@
 <resources>
-    <string name="app_name">Spotify Streamer</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">Cat in the Hat</string>
+    <string name="the_cat">The Cat</string>
+    <string name="thing1">Thing 1</string>
+    <string name="thing2">Thing 2</string>
+    <string name="thingamajigger">Thingamajigger</string>
+    <string name="sally">Sally</string>
+    <string name="nick">Nick</string>
+    <string name="dr_seuss">Dr. Seuss</string>
 </resources>
